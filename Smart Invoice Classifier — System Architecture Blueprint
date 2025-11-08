@@ -1,0 +1,66 @@
+🎯 Goal
+
+A cloud-based AI platform that:
+
+Lets users upload invoices (PDF, image, or scan)
+
+Automatically extracts text and key data (vendor, total, date, category)
+
+Classifies invoices into categories (e.g., utilities, equipment, supplies)
+
+Exports results to Excel/CSV or integrates with accounting tools (QuickBooks, Google Sheets, etc.)
+
+┌──────────────────────────────┐
+│         Frontend (UI)        │
+│  React / Next.js Dashboard   │
+│ - File Upload                │
+│ - View Parsed Data           │
+│ - Edit / Export              │
+└──────────────┬───────────────┘
+               │ REST API
+┌──────────────┴────────────────┐
+│        Backend (FastAPI)      │
+│ - Auth (JWT)                  │
+│ - Invoice Upload              │
+│ - OCR Processing              │
+│ - AI Classification (ML/LLM)  │
+│ - Export Services             │
+│ - WebSocket for Progress      │
+└──────────────┬────────────────┘
+               │ Celery Tasks
+┌──────────────┴────────────────┐
+│     Worker (Celery + Redis)   │
+│ - OCR Jobs                    │
+│ - Classification Tasks        │
+│ - Notifications               │
+└──────────────┬────────────────┘
+               │
+┌──────────────┴────────────────┐
+│        PostgreSQL Database    │
+│ - Users                       │
+│ - Invoices                    │
+│ - Classification Logs         │
+│ - Audit Trail                 │
+└───────────────────────────────┘
+
+| Layer          | Tech                                                             |
+| -------------- | ---------------------------------------------------------------- |
+| **Frontend**   | Next.js (React), TailwindCSS, Axios                              |
+| **Backend**    | FastAPI (Python 3.12), Pydantic, SQLAlchemy                      |
+| **AI / OCR**   | `docTR` (DeepMind OCR) or `Tesseract`, Hugging Face Transformers |
+| **Task Queue** | Celery + Redis                                                   |
+| **Database**   | PostgreSQL                                                       |
+| **Deployment** | Docker + Docker Compose                                          |
+| **CI/CD**      | GitHub Actions                                                   |
+| **Tests**      | PyTest                                                           |
+| **Docs**       | Swagger / ReDoc auto-generated from FastAPI                      |
+
+
+| Version | Feature                                      | Value                            |
+| ------- | -------------------------------------------- | -------------------------------- |
+| v2.0    | AI-powered categorization (LLM / embeddings) | More accurate classifications    |
+| v2.1    | Multi-tenant SaaS support                    | Business-level scalability       |
+| v3.0    | Real-time dashboard with analytics           | Adds “wow” factor for recruiters |
+| v3.1    | Stripe billing + user subscription           | Turns into a real SaaS           |
+
+
